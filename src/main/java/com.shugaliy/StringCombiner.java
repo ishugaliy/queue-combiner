@@ -27,10 +27,10 @@ public class StringCombiner extends Combiner<String> {
     @Override
     public void addInputQueue(BlockingQueue<String> queue, double priority, long isEmptyTimeout, TimeUnit timeUnit) throws CombinerException {
         if (queue == null || timeUnit == null) {
-            throw new NullPointerException();
+            throw new IllegalArgumentException("'queue' and 'timeUnit' values can not be null");
         }
         if (priority < 0 || priority > MAX_PRIORITY_VALUE) {
-            throw new IllegalArgumentException("'priority' value can not be less than 0 or bigger than 10");
+            throw new IllegalArgumentException("'priority' value can not be less than 0 or bigger than " + MAX_PRIORITY_VALUE);
         }
         if (isEmptyTimeout < 0) {
             throw new IllegalArgumentException("'isEmptyTimeout' value can not be negative");
